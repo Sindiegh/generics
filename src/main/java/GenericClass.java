@@ -1,22 +1,39 @@
 public class GenericClass<T> {
-    private T t;
+    private T type;
 
-    public void set(T t) {
-        this.t = t;
-    }
-    public T get() {
-        return t;
+    public void setType(T type) {
+        this.type = type;
     }
 
-    public static void main(String[] args) {
+    public T getType() {
+        return type;
+    }
 
-        GenericClass<String> sInstances = new GenericClass<>();
-        sInstances.set("Sindiswa Khama");
-        System.out.println(sInstances.get());
+    public GenericClass(T type) {
+        this.type = type;
+    }
 
-        GenericClass<Integer> iInstances = new GenericClass<>();
-        iInstances.set(23);
-        System.out.println(iInstances.get());
+    public static <T> void ArrayContent(T[] type) {
+        for (int i = 0; i <type.length; i++) {
+            System.out.println(type[i]);
+        }
+        System.out.println();
+    }
 
+    public static void main(String[] Args){
+        Integer[] intArray = { 15, 500, 89, 6963 };
+        String[] stringArray = { "Sindi", "Happy ", "Thando", "Mimi", "Gay" };
+
+        System.out.println("Integer Array:");
+        ArrayContent(intArray);
+
+        System.out.println("String Array:");
+        ArrayContent(stringArray);
+
+        GenericClass<String> string = new GenericClass<String>("Test");
+        System.out.println(string.type);
+
+        GenericClass<Integer> number = new GenericClass<Integer>(1234);
+        System.out.println(number.type);
     }
 }
